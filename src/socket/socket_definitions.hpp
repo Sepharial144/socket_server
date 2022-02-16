@@ -4,6 +4,9 @@
 // common includes
 #include <cassert>
 
+// inlcude common settings
+#include "socket_settings.hpp"
+
 
 // windows
 #ifdef _WINN32
