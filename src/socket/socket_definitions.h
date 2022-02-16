@@ -6,6 +6,7 @@
 
 
 // windows
+#ifdef _WINN32
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -14,6 +15,16 @@
 
 // Need to link with Ws2_32.lib
 #pragma comment (lib, "Ws2_32.lib")
+
+#elif __linux__
+
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/socket.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+
+#endif
 
 
 // testing variables
@@ -24,7 +35,7 @@
 #define DEFAULT_BUFLEN 4096
 #define DEFAULT_PORT "8080"
 
-#if defined(_WIN32) && !defined(__linux__)
+#ifdef _WIN32 && ndef __linux__
 
 namespace Addrinfo {
 
