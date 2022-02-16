@@ -35,7 +35,7 @@
 #define DEFAULT_BUFLEN 4096
 #define DEFAULT_PORT "8080"
 
-#ifdef _WIN32 && ndef __linux__
+#ifdef _WIN32
 
 namespace Addrinfo {
 
@@ -78,7 +78,7 @@ namespace Addrinfo {
 
 } // namespace addinfo
 
-#elif defined(__linux__) && !defined(_WIN32)
+#elif __linux__
 
 // linux tools 
 #endif

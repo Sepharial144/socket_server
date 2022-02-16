@@ -1,6 +1,6 @@
 #undef UNICODE
 
-#include "logger.h"
+#include "logger.hpp"
 
 #define WIN32_LEAN_AND_MEAN
 
