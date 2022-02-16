@@ -23,8 +23,8 @@ namespace Net {
 		int _bufferLen;
 		char* _defaultPort;
 
-		SOCKET _listenSocket = INVALID_cleaSOCKET;
-		SOCKET _clientSocket = INVALID_SOCKET;
+		SOCKET _listenSocket;
+		SOCKET _clientSocket;
 
 		struct addrinfo* _ptrInfo;
 		struct addrinfo _hints;
@@ -41,7 +41,7 @@ namespace Net {
 		_clientSocket(INVALID_SOCKET),
 		_ptrInfo(nullptr)
 		{
-			assert(_bufferLength > 0 && _bufferLength <= Settings::tcp_ip_packet_max_size);
+			assert(_bufferLen > 0 && _bufferLen <= Settings::TCPIP_PACKET_MAX_SIZE);
 
 			_recvbuf = new char[_bufferLen];
 		}
