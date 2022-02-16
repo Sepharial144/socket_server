@@ -51,19 +51,21 @@ namespace Net {
 		freeaddrinfo(_ptrInfo);
 		delete[] _recvbuf;
 	}
-		int Socket::Init() {
 
-			_initStatus = WSAStartup(MAKEWORD(2, 2), &_wsaData);
-			if (_initStatus != 0) {
-				//m_Error = "WSAStartup failed with error: ";
-				//Logging::Logger::WriteLog(Logging::SOCKET, Logging::ERROR_MESSAGE, strcat(m_Error, static_cast<char*>(_initStatus)));
-				printf("WSAStartup failed with error: %d\n", _initStatus);
-				return 0;
-			}
-			else {
-				printf("WSAStartup started: %d\n", _initStatus);
-			}
+	int Socket::Init() {
+
+		_initStatus = WSAStartup(MAKEWORD(2, 2), &_wsaData);
+		if (_initStatus != 0) {
+			//m_Error = "WSAStartup failed with error: ";
+			//Logging::Logger::WriteLog(Logging::SOCKET, Logging::ERROR_MESSAGE, strcat(m_Error, static_cast<char*>(_initStatus)));
+			printf("WSAStartup failed with error: %d\n", _initStatus);
+			return 0;
 		}
+		else {
+			printf("WSAStartup started: %d\n", _initStatus);
+		}
+		return 1;
+	}
 
 	void Socket::SetSocketParameters()
 	{
