@@ -9,7 +9,7 @@
 
 
 // windows
-#ifdef _WINN32
+#ifdef _WIN32
 
 #include <windows.h>
 #include <winsock2.h>
@@ -30,15 +30,6 @@
 #include <netinet/in.h>
 
 #endif
-
-
-// testing variables
-
-#define TCPIP_PACKET_MAX_SIZE 65536 
-
-// settings of sockets
-#define DEFAULT_BUFLEN 4096
-#define DEFAULT_PORT "8080"
 
 #ifdef _WIN32
 

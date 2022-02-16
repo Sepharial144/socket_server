@@ -17,20 +17,20 @@ namespace Net {
 	class Socket
 	{
 	private:
-		WSADATA m_wsaData;
-		int m_initResult;
+		WSADATA _wsaData;
+		int _initStatus;
 
-		int m_BufferLength;
-		char* m_DefaultPort;
+		int _bufferLength;
+		char* _defaultPort;
 
-		SOCKET m_ListenSocket = INVALID_SOCKET;
-		SOCKET m_ClientSocket = INVALID_SOCKET;
+		SOCKET _listenSocket = INVALID_SOCKET;
+		SOCKET _clientSocket = INVALID_SOCKET;
 
-		struct addrinfo* ptrInfo;
-		struct addrinfo hints;
+		struct addrinfo* _ptrInfo;
+		struct addrinfo _hints;
 
 		int iSendResult;
-		char* recvbuf;
+		char* _recvbuf;
 
 		int Init();
 
