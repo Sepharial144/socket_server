@@ -14,6 +14,16 @@ namespace Net {
 		Socket_IP_V6 = 1,
 	};
 
+#ifdef WIN32
+
+	using SOCKET = SOCKET;
+
+#elif __linux__
+
+	using SOCKET = int;
+
+#endif // Architechture difference
+
 	class Socket
 	{
 	private:
@@ -69,7 +79,10 @@ namespace Net {
 
 	void Socket::SetSocketParameters()
 	{
+
 		ZeroMemory(&_hints, sizeof(_hints));
+		// std::memset(&_hints, 0, sizeof(_hints));
+
 		_hints.ai_family = Addrinfo::aifamily::FAM_AF_INET;
 		_hints.ai_socktype = Addrinfo::aisocktype::TYPE_SOCK_STREAM;
 		_hints.ai_protocol = Addrinfo::aiprotocol::PROTOCOL_TCP;
