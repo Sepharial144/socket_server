@@ -1,5 +1,5 @@
-#ifndef SOCKET_EXCEPTIONS_H
-#define SOCKET_EXCEPTIONS_H
+#ifndef SOCKET_EXCEPTIONS_HPP
+#define SOCKET_EXCEPTIONS_HPP
 
 #if defined(_WIN32) && !defined(__linux__)
 
@@ -13,4 +13,4 @@
 
 
 
-#endif // !SOCKET_EXCEPTIONS_H
+#endif // !SOCKET_EXCEPTIONS_HPP
