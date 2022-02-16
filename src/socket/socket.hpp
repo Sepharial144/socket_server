@@ -44,9 +44,9 @@ namespace Net {
 	
 	public:
 
-		Socket::Socket(int buf_len, char* default_port):
+		Socket::Socket(int buf_len, const char* port):
 		_bufferLen(buf_len),
-		_defaultPort(default_port),
+		_defaultPort(port),
 		_listenSocket(INVALID_SOCKET),
 		_clientSocket(INVALID_SOCKET),
 		_ptrInfo(nullptr)
