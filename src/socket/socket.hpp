@@ -17,27 +17,32 @@ namespace Net {
 #ifdef WIN32
 
 	using SOCKET = SOCKET;
+	using socket_addr_info = addrinfo;
 
 #elif __linux__
 
 	using SOCKET = int;
+	using socket_addr_info = sockaddr_in;
 
 #endif // Architechture difference
 
 	class Socket
 	{
 	private:
+	#ifdef WIN32
 		WSADATA _wsaData;
+	#endif
+
 		int _initStatus;
 
 		int _bufferLen;
-		char* _defaultPort;
+		cosnt char* _defaultPort;
 
 		SOCKET _listenSocket;
 		SOCKET _clientSocket;
 
-		struct addrinfo* _ptrInfo;
-		struct addrinfo _hints;
+		struct socket_addr_info* _ptrInfo;
+		struct socket_addr_info _hints;
 
 		int _sendStatus;
 		char* _recvbuf;
