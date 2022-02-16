@@ -1,5 +1,5 @@
-#ifndef SOCKET_CONTEXT_H
-#define SOCKET_CONTEXT_H
+#ifndef SOCKET_CONTEXT_HPP
+#define SOCKET_CONTEXT_HPP
 
 // common includes
 #include <cassert>
@@ -84,4 +84,4 @@ namespace Addrinfo {
 #endif
 
 
-#endif // !1
+#endif // !SOCKET_CONTEXT_HPP

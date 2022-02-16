@@ -1,5 +1,5 @@
-#ifndef SOCKET_H
-#define SOCKET_H
+#ifndef SOCKET_HPP
+#define SOCKET_HPP
 
 #include "socket_definitions.h"
 #include "logger.h"
@@ -48,4 +48,4 @@ namespace Net {
 
 } // namespace Net
 
-#endif
+#endif // !SOCKET_HPP
