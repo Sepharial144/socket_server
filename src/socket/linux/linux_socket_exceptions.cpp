@@ -1,7 +1,9 @@
-#include "linux_socket_exceptions.h"
+#include "linux_socket_exceptions.hpp"
 
 #include <map>
 #include <string>
+
+#ifdef __linux__
 
 namespace Net {
 
@@ -14,5 +16,7 @@ namespace Net {
 	{
 	
 	};
+
+#endif // ! __linux__
 
 } // namespace Net

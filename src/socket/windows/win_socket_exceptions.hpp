@@ -1,7 +1,7 @@
 #ifndef WIN_SOCKET_EXCEPTIONS_HPP
 #define WIN_SOCKET_EXCEPTIONS_HPP
 
-#if defined(_WIN32) && !defined(__linux__)
+#ifdef _WIN32
 
 #include "winsock2.h"
 
@@ -12,6 +12,6 @@ namespace Net {
 
 } //namespace Net
 
-#endif
+#endif // !_WIN32
 
 #endif // !WIN_SOCKET_EXCEPTIONS_HPP

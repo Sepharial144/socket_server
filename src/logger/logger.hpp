@@ -1,5 +1,5 @@
-#ifndef LOGGER_H
-#define LOGGER_H
+#ifndef LOGGER_HPP
+#define LOGGER_HPP
 
 #include <fstream>
 #include <vector>
@@ -105,4 +105,4 @@ namespace Logging {
 
 }; // end namespace Logging
 
-#endif
+#endif // !LOGGER_HPP

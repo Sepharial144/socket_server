@@ -1,7 +1,9 @@
 #ifndef LINUX_SOCKET_EXCEPTIONS_HPP
 #define LINUX_SOCKET_EXCEPTIONS_HPP
 
-#if defined(__linux__) && !defined(_WIN32)
+#include <map>
+
+#ifdef __linux__
 
 namespace Net {
 
