@@ -1,8 +1,8 @@
 #ifndef SOCKET_HPP
 #define SOCKET_HPP
 
-#include "socket_definitions.h"
-#include "logger.h"
+#include "socket_definitions.hpp"
+#include "logger.hpp"
 
 
 namespace Net {
