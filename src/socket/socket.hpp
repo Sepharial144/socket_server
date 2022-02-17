@@ -36,12 +36,12 @@ namespace Net {
 		int _initStatus;
 
 		int _bufferLen;
-		cosnt char* _defaultPort;
+		const char* _defaultPort;
 
 		SOCKET _listenSocket;
 		SOCKET _clientSocket;
 
-		struct socket_addr_info* _ptrInfo;
+		struct socket_addr_info* _result;
 		struct socket_addr_info _hints;
 
 		int _sendStatus;
@@ -100,7 +100,7 @@ namespace Net {
 		SetSocketParameters();
 
 		// Resolve the server address and port
-		_initStatus = getaddrinfo(NULL, _defaultPort, &_hints, &_ptrInfo);
+		_initStatus = getaddrinfo(NULL, _defaultPort, &_hints, &_result);
 		if (_initStatus != 0) {
 
 			printf("getaddrinfo failed with error: %d\n", _initStatus);
