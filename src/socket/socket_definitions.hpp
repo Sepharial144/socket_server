@@ -23,11 +23,13 @@
 // linux
 #elif __linux__
 
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/socket.h>
-#include <stdlib.h>
+#include <fcntl.h>
 #include <netinet/in.h>
+#include <errno.h>
 
 #endif
 
