@@ -26,19 +26,23 @@ int main()
     addr.sin_port = htons(8080);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    guard( bind(listen_socket_fd, (const struct sockadr*) &addr, sizeof(addr)), "could not bind socket");
+    guard( bind(listen_socket_fd, (struct sockaddr*) &addr, sizeof(addr)), "could not bind socket");
 
     guard(listen(listen_socket_fd, 100), "could not listen");
 
-    for(::)
+    for(;;)
     {
         int client_socket_fd = accept(listen_socket_fd, NULL, NULL);
+
         if (client_socket_fd == -1) {
+
             if (errno == EWOULDBLOCK) {
                 std::cout << "No pending connections; sleeping for one second.\n";
                 sleep(1);
+
             } else {
-                throw std::bad_exception("Error when accepting connection");
+                throw std::invalid_argument("Error when accepting connection");
+
                 exit(EXIT_FAILURE);
             }
         } else {
