@@ -31,6 +31,11 @@ class Logger
     void warning(const char* module, const char* message) {
         std::cout << message << "\n";
     };
+
+    void warning(std::string& module, std::string& message)
+    {
+        std::cout << message << "\n";
+    }
 };
 
 using ptrLogger = std::shared_ptr<Logger>;
