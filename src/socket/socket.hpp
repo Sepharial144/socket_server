@@ -81,7 +81,7 @@ class ServerSocket: Socket
         void setParameter() override
         {
                 _addr.sin_family = AF_INET;
-                _addr.sin_port = htons(8080);
+                _addr.sin_port = htons(_port);
                 _addr.sin_addr.s_addr = htonl(INADDR_ANY);
         }
 
