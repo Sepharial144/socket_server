@@ -12,7 +12,7 @@ class Socket
 
     virtual void setParameter();
 
-    virtual void bind();
+    virtual void bindSocket();
 
     virtual void listening();
 
@@ -85,12 +85,12 @@ class ServerSocket: Socket
                 _addr.sin_addr.s_addr = htonl(INADDR_ANY);
         }
 
-        void bind() override
+        void bindSocket() override
         {
-            Guard(bind(_serverSocket_fd, (struct sockaddr*) &_addr, sizeof(_addr)), "Could not bind socket server");
+            Guard( bind(_serverSocket_fd, (struct sockaddr*) &addr, sizeof(addr)), "could not bind socket");
         }
 
-        void listening()
+        void listening() override
         {
             Guard(listen(_serverSocket_fd, 100), "Could not listening socker server");
         }
