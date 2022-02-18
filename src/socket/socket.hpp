@@ -18,7 +18,7 @@ class Socket
 
     virtual void setBuffer();
 
-    virtual void accept();
+    virtual void Run();
 };
 
 #include <memory>
@@ -93,6 +93,32 @@ class ServerSocket: Socket
         void listening() override
         {
             Guard(listen(_serverSocket_fd, _connectionCount), "Could not listening socker server");
+        }
+
+        void Run() override
+        {
+            for(;;)
+                {
+                int _clientSocket_fd = accept(_serverSocket_fd, NULL, NULL);
+
+                if (_clientSocket_fd == -1) {
+
+                    if (errno == EWOULDBLOCK) {
+                        std::cout << "No pending connections; sleeping for one second.\n";
+                        sleep(1);
+
+                    } else {
+                        throw std::invalid_argument("Error when accepting connection");
+
+                        exit(EXIT_FAILURE);
+                    }
+                } else {
+                    char msg[] = "hello\n";
+                    std::cout << "Got a connection; writing 'hello' then closing.\n";
+                    send(_clientSocket_fd, msg, sizeof(msg), 0);
+                    close(_clientSocket_fd);
+                }
+            }
         }
 
     public:
