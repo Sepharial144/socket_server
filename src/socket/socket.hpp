@@ -1,6 +1,8 @@
 #ifndef SOCKET_HPP
 #define SOCKET_HPP
 
+#include "socket_definitions.hpp"
+
 class Socket
 {
 
@@ -46,11 +48,20 @@ class ServerSocket: Socket
 
         ptrLogger _logger;
 
-        int _socketServer_fd;
+        int _serverSocket_fd{};
+        int _flags;
+        int _clientSocket_fd{};
+
+        int _connectionCount{};
+
+        struct sockaddr_in _addr;
+
+        int _port{};
 
     private:
         int Guard(int socket_fd, const char* message) override
         {
+            // need refactoring accrodingly with linux errors
             if (socket_fd == -1)
             {
                 _logger->warning("Socket server", message);
@@ -60,14 +71,34 @@ class ServerSocket: Socket
 
         void init() override
         {
-        
+            _serverSocket_fd = Guard( socket(AF_INET, SOCK_STREAM, 0), "Could not create TCP socket server");
+
+            int _flags = Guard( fcntl(_serverSocket_fd, F_GETFL), "Could not get flags on TCP socket serever");
+
+            Guard( fcntl(_serverSocket_fd, F_SETFL, _flags | O_NONBLOCK), "Could not set TCP socket server to be non-blocking");
         }
 
+        void setParameter() override
+        {
+                _addr.sin_family = AF_INET;
+                _addr.sin_port = htons(8080);
+                _addr.sin_addr.s_addr = htonl(INADDR_ANY);
+        }
 
+        void bind() override
+        {
+            Guard(bind(_serverSocket_fd, (struct sockaddr*) &_addr, sizeof(_addr)), "Could not bind socket server");
+        }
+
+        void listening()
+        {
+            Guard(listen(_serverSocket_fd, 100), "Could not listening socker server");
+        }
 
     public:
-        ServerSocket(std::shared_ptr<Logger> logger):
-        _logger(logger)
+        ServerSocket(std::shared_ptr<Logger> logger, int port):
+        _logger(logger),
+        _port(port)
         {
             init();
         };
