@@ -87,18 +87,19 @@ class ServerSocket: Socket
 
         void bindSocket() override
         {
-            Guard( bind(_serverSocket_fd, (struct sockaddr*) &addr, sizeof(addr)), "could not bind socket");
+            Guard(bind(_serverSocket_fd, (struct sockaddr*) &_addr, sizeof(_addr)), "Could not bind socket server");
         }
 
         void listening() override
         {
-            Guard(listen(_serverSocket_fd, 100), "Could not listening socker server");
+            Guard(listen(_serverSocket_fd, _connectionCount), "Could not listening socker server");
         }
 
     public:
         ServerSocket(std::shared_ptr<Logger> logger, int port):
         _logger(logger),
-        _port(port)
+        _port(port),
+        _connectionCount(64)
         {
             init();
         };
