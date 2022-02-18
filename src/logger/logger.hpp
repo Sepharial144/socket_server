@@ -8,7 +8,7 @@
 namespace Logging {
 
 	// Description of modules using in this program
-	enum Module
+	enum class Module
 	{
 		SOCKET = 0,
 		PACKET_STORAGE = 1,

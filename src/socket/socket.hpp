@@ -95,7 +95,7 @@ class ServerSocket: Socket
             Guard(listen(_serverSocket_fd, _connectionCount), "Could not listening socker server");
         }
 
-        void Run() override
+        void Run(int delay = 1) override
         {
             for(;;)
                 {
@@ -105,7 +105,7 @@ class ServerSocket: Socket
 
                     if (errno == EWOULDBLOCK) {
                         std::cout << "No pending connections; sleeping for one second.\n";
-                        sleep(1);
+                        sleep(delay);
 
                     } else {
                         throw std::invalid_argument("Error when accepting connection");
