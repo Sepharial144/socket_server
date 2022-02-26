@@ -4,3 +4,12 @@
 # build
 /build
 /out
+
+# compiled files and binaries
+.o
+.pyc
+
+# logging
+.log
+.lock
+.tmp
