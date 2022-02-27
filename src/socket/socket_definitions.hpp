@@ -1,5 +1,5 @@
-#ifndef SOCKET_CONTEXT_HPP
-#define SOCKET_CONTEXT_HPP
+#ifndef SOCKET_DEFINITIONS_HPP
+#define SOCKET_DEFINITIONS_HPP
 
 // common includes
 #include <cassert>
@@ -9,7 +9,7 @@
 
 
 // windows
-#ifdef _WIN32
+#ifdef __WIN32__
 
 #include <windows.h>
 #include <winsock2.h>
@@ -33,7 +33,7 @@
 
 #endif
 
-#ifdef _WIN32
+#ifdef __WIN32__
 
 namespace Addrinfo {
 
@@ -82,4 +82,4 @@ namespace Addrinfo {
 #endif
 
 
-#endif // !SOCKET_CONTEXT_HPP
+#endif // !SOCKET_DEFINITIONS_HPP
