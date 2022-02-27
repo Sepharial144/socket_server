@@ -18,17 +18,17 @@ namespace Logging {
 	// Type of message
 	enum class TypeMessage
 	{
-		MES_NO_TYPE = 0,
-		ERROR_MESSAGE = 1,
-		INFORMATION_MESSAGE = 2,
-		SERVICE_MESSAGE = 3
+		MES_NO_TYPE,
+		ERROR_MESSAGE,
+		INFORMATION_MESSAGE,
+		SERVICE_MESSAGE
 	};
 
 	namespace {
 		// Module-> Type module in string
 		std::map<Module, std::string> ModuleMap
 		{
-			{Module::SOCKET, "SOCKET"},
+			{Module::SOCKET, "SOCKET MODULE"},
 			{Module::PACKET_STORAGE, "PACKET_STORAGE"},
 		};
 
@@ -49,7 +49,6 @@ namespace Logging {
 		};
 
 	}; // end anonimous namespace
-
 
 	class Logger
 	{
@@ -99,7 +98,7 @@ namespace Logging {
 	public:
 		Logger();
 
-		static void WriteLog(Module module_name, TypeMessage mes, const char *text);
+		void WriteLog(Module module_name, TypeMessage mes, const char *text);
 	};
 
 

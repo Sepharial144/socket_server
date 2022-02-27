@@ -29,9 +29,11 @@ namespace Logging {
 	};
 
 
-	static void Logger::WriteLog(Module module_name, TypeMessage mes, const char* text)
+	void Logger::WriteLog(Module module_name, TypeMessage mes, const char* text)
 	{
-		for (itFile = chunkFiles.begin(); itFile != chunkFiles.end(); ++itFile)
+		auto itFile = chunkFiles.begin();
+		auto end = chunkFiles.end();
+		for (itFile; itFile != end; ++itFile)
 		{
 			if ( itFile->moudule_type == module_name) {
 				if (itFile->file_status == true) 
