@@ -122,8 +122,8 @@ class ServerSocket: Socket
         }
 
     public:
-        ServerSocket(std::shared_ptr<Logger> logger, int port):
-        _logger(logger),
+        ServerSocket(Logger& logger, int port):
+        _logger(std::make_shared<Logger>(logger)),
         _port(port),
         _connectionCount(64)
         {
