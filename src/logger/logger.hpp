@@ -54,43 +54,33 @@ namespace Logging {
 	{
 	private:
 
-		std::map <Module, std::string> Modules;
-		std::map <TypeMessage, std::string> Messages;
-		std::map <Module, std::string> FilePath;
+		std::map <Module, std::string> _modules;
+		std::map <TypeMessage, std::string> _messages;
+		std::map <Module, std::string> _filePath;
 
 		struct FileInfo
 		{
-			Module moudule_type;
-			std::ofstream file;
-			char* filename;
-			bool file_status = false;
+			Module _moudule_type;
+			std::ofstream _file;
+			char* _filename;
 
-
-			FileInfo(Module module_name, char* file_name)
-			{
-				moudule_type = module_name;
-
-				filename = file_name;
-
-				file.open(filename);
-				if (file.is_open())
-				{
-					file_status = true;
-				}
-			};
+			FileInfo(Module module_name, char* file_name):
+			_moudule_type(module_name),
+			_filename(file_name)
+			{};
 
 			~FileInfo()
-			{
-				if (file_status == true) file.close();
-			}
+			{}
 		};
 
-		std::vector<FileInfo> chunkFiles;
-		std::vector<FileInfo>::iterator itFile;
+		std::vector<FileInfo> _chunkFiles;
+		std::vector<FileInfo>::const_iterator _itFile;
 
 		const char* getModuleName(Module module_name);
 
 		const char* getMessageTypeStr(TypeMessage mes);
+
+		auto Logger::findIterator(Module module_name) -> std::vector<FileInfo>::const_iterator;
 
 		const char* getFilePath(Module module_name);
 
