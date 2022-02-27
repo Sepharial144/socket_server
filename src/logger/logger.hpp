@@ -16,7 +16,7 @@ namespace Logging {
 	};
 
 	// Type of message
-	enum TypeMessage
+	enum class TypeMessage
 	{
 		MES_NO_TYPE = 0,
 		ERROR_MESSAGE = 1,
@@ -28,24 +28,24 @@ namespace Logging {
 		// Module-> Type module in string
 		std::map<Module, std::string> ModuleMap
 		{
-			{SOCKET, "SOCKET"},
-			{PACKET_STORAGE, "PACKET_STORAGE"},
+			{Module::SOCKET, "SOCKET"},
+			{Module::PACKET_STORAGE, "PACKET_STORAGE"},
 		};
 
 		// Type of message -> string message
 		std::map<TypeMessage, std::string> MessageMap
 		{
-			{MES_NO_TYPE, "[NO_TYPE]"},
-			{ERROR_MESSAGE, "[ERROR]"},
-			{INFORMATION_MESSAGE, "[INFORMATION]"},
-			{SERVICE_MESSAGE, "[SERVICE]"},
+			{TypeMessage::MES_NO_TYPE, "[NO_TYPE]"},
+			{TypeMessage::ERROR_MESSAGE, "[ERROR]"},
+			{TypeMessage::INFORMATION_MESSAGE, "[INFORMATION]"},
+			{TypeMessage::SERVICE_MESSAGE, "[SERVICE]"},
 		};
 
 		// Module -> FIle
 		std::map<Module, std::string> FileModulePathMap
 		{
-			{SOCKET, "socket.txt"},
-			{PACKET_STORAGE, "packet_storage.txt"},
+			{Module::SOCKET, "socket.txt"},
+			{Module::PACKET_STORAGE, "packet_storage.txt"},
 		};
 
 	}; // end anonimous namespace

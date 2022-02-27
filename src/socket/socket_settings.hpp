@@ -9,4 +9,4 @@ namespace Settings
 }
 
 
-#endif // !SOCKET_EXCEPTIONS_HPP
+#endif // !SOCKET_SETTINGS_HPP

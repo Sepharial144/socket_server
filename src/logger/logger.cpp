@@ -8,7 +8,7 @@ namespace Logging {
 		Messages = MessageMap;
 		FilePath = FileModulePathMap;
 
-		chunkFiles.reserve(Module::LENGTH);
+		chunkFiles.reserve(2);
 		itFile = chunkFiles.begin();
 	};
 
